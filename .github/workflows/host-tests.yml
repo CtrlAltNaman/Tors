@@ -1,0 +1,20 @@
+name: Host tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  python-host-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run backend protocol tests
+        working-directory: firmware/esp32
+        run: python tests/test_local_backend.py
+      - name: Run firmware integration checks
+        working-directory: firmware/esp32
+        run: python tests/test_kws_firmware_integration.py

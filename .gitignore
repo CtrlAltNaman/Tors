@@ -1,0 +1,67 @@
+# Operating-system and editor files
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/*
+!.vscode/extensions.json
+!.vscode/tasks.json
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+dist/
+*.egg-info/
+
+# ESP-IDF and CMake output
+**/build/
+**/managed_components/
+**/.espressif/
+**/CMakeFiles/
+**/CMakeCache.txt
+**/cmake_install.cmake
+**/compile_commands.json
+**/sdkconfig.old
+**/flasher_args.json
+**/*.o
+**/*.a
+**/*.elf
+**/*.map
+**/*.exe
+**/*.bin
+firmware/esp32/*.pptx
+firmware/esp32/*.ogg
+firmware/esp32/*.zip
+
+# Machine-local configuration and secrets
+**/network_config.h
+**/*.user
+**/*.workspace
+.env
+.env.*
+!.env.example
+
+# Captured audio and generated recordings
+**/local_received/
+**/recordings/
+**/test_audio/*.wav
+**/*.raw
+
+# Large/generated ML data
+**/dataset/
+**/enhanced_recordings/
+**/checkpoints/
+**/*.keras
+**/*.h5
+**/export/*.csv
+**/export/*.txt
+
+# Temporary project snapshots
+**/saved/
+**/main/main.zip
+**/tests/.tmp_*/
+**/tests/.tmp_*
