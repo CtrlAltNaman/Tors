@@ -31,7 +31,7 @@ claims require controlled measurement on target hardware.
 | Path | Responsibility |
 | --- | --- |
 | firmware/esp32/ | Current ESP-IDF firmware, device tests, model integration, and local backend harness |
-| docs/ | Repository-level architecture, evaluation, and design decisions |
+| docs/datasheets/ | Hardware datasheets used by the project |
 | presentation/ | SIH slides, diagrams, and submission assets |
 | ml/ | Model-training and export boundary; dataset files stay out of Git |
 | backend/ | Production ASR gateway and protocol tests |
@@ -73,14 +73,13 @@ firmware/esp32/docs/ESP32_BACKEND_DEVICE_CONTRACT.md.
 - local KWS detection sends a prebuffer followed by live audio
 - idle microphone audio is not continuously uploaded
 
-## Evidence and evaluation
+## Project documentation
 
-Start with docs/benchmarking.md. It distinguishes model-only results from
-full-device measurements and defines the evidence needed for RAM, flash, CPU,
-accuracy, false activations, and wake-to-server latency.
+Project-specific documentation is kept with the firmware under
+firmware/esp32/docs/. Start with the device/backend contract and the ML
+deployment review there.
 
-The current ML integration review is in
-firmware/esp32/docs/ESP32S3_ML_DEPLOYMENT_REVIEW.md.
+Hardware references are in docs/datasheets/.
 
 ## Data and secrets
 
