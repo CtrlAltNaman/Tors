@@ -34,7 +34,7 @@ claims require controlled measurement on target hardware.
 | docs/datasheets/ | Hardware datasheets used by the project |
 | presentation/ | SIH slides, diagrams, and submission assets |
 | ml/ | Model-training and export boundary; dataset files stay out of Git |
-| backend/ | Production ASR gateway and protocol tests |
+| local_backend/ | ASR-free LAN backend and playback test harness |
 | simulator/ | Reserved host-side replay and end-to-end simulation boundary |
 | tools/ | Reserved measurement, flashing, and reproducibility tools |
 
@@ -46,13 +46,14 @@ paths relative to firmware/esp32.
 
 Run the dependency-light host checks:
 
-    cd firmware/esp32
-    python tests/test_local_backend.py
-    python tests/test_kws_firmware_integration.py
+    python local_backend/tests/test_local_backend.py
+    python local_backend/tests/test_local_playback.py
+    python firmware/esp32/tests/test_kws_firmware_integration.py
 
 Run the LAN capture backend:
 
-    cd firmware/esp32
+    cd local_backend
+    python -m pip install -r requirements.txt
     python local_backend.py
 
 Build the device firmware from an ESP-IDF-enabled terminal:

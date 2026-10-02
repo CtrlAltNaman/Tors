@@ -109,13 +109,13 @@ Prefer full-project flashing so the matching bootloader/partitions are used.
 ## Test without ASR
 
 See [Local playback test](LOCAL_PLAYBACK_TEST.md). The repository's
-`SampleAudio.ogg` is preserved. `test_audio/SampleAudio_16k_mono.wav` is its
+`SampleAudio.ogg` is preserved. `local_backend/test_audio/SampleAudio_16k_mono.wav` is its
 FFmpeg-decoded 16 kHz mono PCM16 version: 319256 samples, 19.9535 seconds,
 998 wire packets (the final packet is zero-padded). No OGG or WAV header is
 sent to the ESP32. Use the local server's optional sender:
 
 ```powershell
-python local_backend.py --play-wav test_audio/SampleAudio_16k_mono.wav
+python local_backend/local_backend.py --play-wav local_backend/test_audio/SampleAudio_16k_mono.wav
 ```
 
 The ESP32 must connect to this laptop's reachable LAN IP. In the subsequent

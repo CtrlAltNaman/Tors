@@ -11,9 +11,9 @@
 
 ## Local verification
 
-    cd firmware/esp32
-    python tests/test_local_backend.py
-    python tests/test_kws_firmware_integration.py
+    python local_backend/tests/test_local_backend.py
+    python local_backend/tests/test_local_playback.py
+    python firmware/esp32/tests/test_kws_firmware_integration.py
 
 If ESP-IDF is available, also run idf.py build from firmware/esp32.
 

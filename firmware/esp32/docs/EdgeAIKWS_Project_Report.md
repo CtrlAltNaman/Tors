@@ -119,7 +119,7 @@ Each binary message has a 16-byte little-endian header (`<BBBBHHII>`) plus 640 b
 The repository contains two distinct backend paths:
 
 1. **ASR backend** in `SERVER SIDE CODE/sih-voice-activator-main`: validates the protocol, accepts `hello/start/audio/stop`, reconstructs per-stream WAV files, queues PCM to a Vosk ASR worker, logs ASR results, and persists device telemetry as JSONL. Its roadmap labels ESP32 hardware integration (M3) as in progress. The available latency helper measures a start-to-first-frame proxy; no measured detection-to-server p50/p95/p99 result is included.
-2. **Local test backend** in the project root (`local_backend.py`): receives and saves microphone streams and acknowledges metrics without requiring the ASR service. Optional `--play-wav` and `--test-tone` modes send paced speaker-test audio after device connection. This is a test harness, not the ASR backend.
+2. **Local test backend** in the repository-level `local_backend/` folder: receives and saves microphone streams and acknowledges metrics without requiring the ASR service. Optional `--play-wav` and `--test-tone` modes send paced speaker-test audio after device connection. This is a test harness, not the ASR backend.
 
 The device also hosts a read-only local diagnostics page at its own LAN IP (`/`, `/logs`) and saved recording access at `/recordings`. Device metrics are also sent over WebSocket for backend logging. The diagnostics page is unauthenticated HTTP intended for a trusted LAN only; it should not be exposed to the public Internet. Firmware’s configured backend address is environment-specific and must match the laptop/server’s reachable LAN address. `0.0.0.0` is a server bind address, not an ESP32 destination.
 

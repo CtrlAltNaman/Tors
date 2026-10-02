@@ -118,7 +118,7 @@ gcc -std=c11 -O2 -Wall -Wextra -Werror -msse2 -mfpmath=sse -Imain tests/kws_fron
 ./tests/kws_frontend_test.exe
 python tests/test_kws_firmware_integration.py
 python tests/test_firmware_settings.py
-python tests/test_local_backend.py
+python local_backend/tests/test_local_backend.py
 node tests/test_diagnostics_page.cjs
 idf.py build
 idf.py size

@@ -1,6 +1,7 @@
 # Local speaker test without ASR
 
-Run these commands from `C:/Users/91805/OneDrive/Desktop/SIH/ISRO/EdgeAIKWS`.
+Run these commands from the repository root. The local test backend lives in
+the repository-level `local_backend/` folder.
 The backend needs Python and the existing `websockets` dependency (tested with
 Python 3.12 and websockets 16). If missing, install it with
 `python -m pip install websockets`. Playback uses the standard library; it needs
@@ -9,7 +10,7 @@ no ASR, model downloads, audio device on the laptop, or runtime codec packages.
 Use the prepared WAV decoded from the repository's `SampleAudio.ogg`:
 
 ```powershell
-python local_backend.py --play-wav test_audio/SampleAudio_16k_mono.wav
+python local_backend/local_backend.py --play-wav local_backend/test_audio/SampleAudio_16k_mono.wav
 ```
 
 The prepared file contains 319,256 samples of uncompressed PCM16, mono, 16000 Hz:
@@ -22,11 +23,11 @@ the WAV; the backend never decodes or sends OGG and never sends WAV headers.
 For a two-second 440 Hz tone, with 12% peak amplitude and 50 ms fades:
 
 ```powershell
-python local_backend.py --test-tone
+python local_backend/local_backend.py --test-tone
 ```
 
 The two playback flags are mutually exclusive. With neither flag,
-`python local_backend.py` remains capture-only. Uploaded microphone streams still
+`python local_backend/local_backend.py` remains capture-only. Uploaded microphone streams still
 save under `local_received` (or `--output-dir PATH`), and metrics are acknowledged
 while playback runs. Completed streams are detached from receive state and saved
 with `asyncio.to_thread`, so disk writes do not block playback or metrics. Writes
@@ -99,9 +100,9 @@ with a CLI error. The sender does not resample or silently relabel inputs.
 ## Host-only checks
 
 ```powershell
-python tests/test_local_playback.py
-python tests/test_local_backend.py
-python tests/test_sample_playback.py
+python local_backend/tests/test_local_playback.py
+python local_backend/tests/test_local_backend.py
+python local_backend/tests/test_sample_playback.py
 ```
 
 The playback suite uses deterministic clock/sleep and transport delays for pacing,
