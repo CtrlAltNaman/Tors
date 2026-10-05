@@ -1,0 +1,43 @@
+
+================================================================
+Validation metrics (speaker/file-disjoint split)
+================================================================
+At the firmware threshold 0.85:
+  True Positive Rate    : 0.4326   (122 hit / 160 missed)
+  False Activation Rate : 0.0000   (0 false / 742 correct reject)
+
+Score distribution - P(keyword):
+  positives : mean 0.683  sd 0.301  range 0.023-1.000
+  negatives : mean 0.006  sd 0.030  range 0.000-0.421
+  separation: +0.676 between means = 4.1 sd
+
+Threshold sweep - use this to pick DETECTION_THRESHOLD in app_main.cc:
+    thresh      TPR      FAR
+     0.001   1.0000   0.3140
+     0.005   1.0000   0.1658
+     0.031   0.9929   0.0364
+     0.469   0.7270   0.0000
+     0.500   0.7057   0.0000
+     0.700   0.5390   0.0000
+     0.800   0.4681   0.0000
+     0.850   0.4326   0.0000  <- firmware
+     0.900   0.3865   0.0000
+     0.920   0.3652   0.0000
+     0.950   0.2908   0.0000
+     0.977   0.1809   0.0000
+     0.990   0.0957   0.0000
+
+Best threshold with FAR <= 1%: 0.143 -> TPR 0.943, FAR 0.009
+  app_main.cc currently uses 0.85; this model wants 0.143.
+  Do not change the firmware for a model trained on this little data -
+  a threshold tuned to one voice will not survive the next retrain.
+
+Per speaker, at the firmware threshold:
+  speaker         clips  caught   rate  mean P(kw)
+  archit            146      47   0.32       0.581
+  parina            136      75   0.55       0.792
+
+Note: these are per-window rates on isolated clips. The firmware adds
+temporal smoothing (SMOOTHING_WINDOW consecutive positives), which
+lowers the real false-activation rate below the FAR above. Confirm on
+hardware against continuous audio before trusting either number.

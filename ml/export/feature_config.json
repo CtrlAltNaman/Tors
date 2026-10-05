@@ -1,0 +1,14 @@
+{
+  "sample_rate": 16000,
+  "frame_length": 480,
+  "frame_step": 320,
+  "fft_length": 512,
+  "num_mfcc": 40,
+  "num_frames": 49,
+  "mel_lower_hz": 20.0,
+  "mel_upper_hz": 8000.0,
+  "log_epsilon": 1e-06,
+  "input_scale": 0.5583019852638245,
+  "input_zero_point": 93,
+  "model_size_bytes": 36744
+}
