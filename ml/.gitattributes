@@ -1,0 +1,4 @@
+* text=auto
+*.wav    binary
+*.tflite binary
+*.csv    -text

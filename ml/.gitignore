@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# PC test harness binaries (built by deploy_esp32s3/tools/verify_c_features.py)
+deploy_esp32s3/tools/pc_harness/kws_pc
+deploy_esp32s3/tools/pc_harness/kws_pc.exe
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
