@@ -1,0 +1,7 @@
+# Python reference tools (tested with Python 3.9.12 on Windows)
+tensorflow==2.15.1
+numpy==1.26.4
+scipy==1.13.1
+soundfile==0.13.1
+sounddevice==0.5.6   # mic_kws.py only
+librosa==0.11.0      # only for resampling non-16 kHz WAVs
